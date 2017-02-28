@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">System und Reglungstechnik</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
+    <string name="button">weiter</string>
+    <string name="matchmacking">test</string>
+    <string name="plus">+</string>
+    <string name="karma">Karma</string>
+
+
+    <!-- Questions -->
+    <string name="questionStart">Willkommen im SRT Kurzfragenkatalog. Drücke weiter um zu starten.</string>
+    <string name="questionEnd">Alle Fragen beantwortet. Hoffentlich fühlst du dich jetzt nicht zu schlecht.</string>
+    <string name="question1">Ein System aus fünf Eingängen und drei Ausgängen erfordert bei einer Beschreibung mit
+                             Eingrößensystemen das Aufstellen von 15 Übertragungsfunktionen.</string>
+    <string name="question2">Die Tustin- und Euler-Transformationen sind Approximationen für die betragsmäßige Diskretisierung.</string>
+    <string name="question3">Ein P-Regler benötigt immer eine bleibende Regeldifferenz, um eine Stellgröße zu generieren.</string>
+    <string name="question4">Die einem Pol zugeordnete Eckfrequenz lässt sich in der komplexen Zahlenebene als Abstand
+                             zwischen dem Pol und dem Ursprung darstellen.</string>
+
+    <!-- Toasts -->
+    <string name="right">Richtig</string>
+    <string name="wrong">Falsch</string>
+
+
+</resources>
+

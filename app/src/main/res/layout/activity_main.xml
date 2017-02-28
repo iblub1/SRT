@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/orange"
+    android:orientation="vertical"
+    tools:context="com.example.android.srt.MainActivity">
+
+    <include layout="@layout/app_bar"
+        android:id="@+id/app_bar"/>
+
+    <TextView
+        android:id="@+id/question"
+        style="@style/questionStyle" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/layout_marginBottom"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <CheckBox
+                android:id="@+id/checkBoxYes"
+                style="@style/checkboxStyle"/>
+
+            <TextView
+                style="@style/answerTextViewStyle"
+                android:layout_below="@id/checkBoxYes"
+                android:text="@string/yes" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <CheckBox
+                android:id="@+id/checkBoxNo"
+                style="@style/checkboxStyle" />
+
+            <TextView
+                style="@style/answerTextViewStyle"
+                android:layout_below="@id/checkBoxNo"
+                android:text="@string/no" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/next"
+        style="@style/buttonStyle"
+        android:onClick="next" />
+
+</LinearLayout>

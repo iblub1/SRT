@@ -16,4 +16,12 @@
     <color name="black">#000000</color>
     <color name="gray">#bdbdbd</color>
 
+    <array name="background">
+        <item>@color/orange</item>
+        <item>@color/green</item>
+        <item>@color/yellow</item>
+        <item>@color/blue</item>
+        <item>@color/red</item>
+        <item>@color/blue_gray</item>
+    </array>
 </resources>

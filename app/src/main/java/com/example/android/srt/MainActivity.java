@@ -1,7 +1,6 @@
 package com.example.android.srt;
 
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -9,6 +8,10 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Random;
+
+import static com.example.android.srt.R.id.question;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -99,42 +102,9 @@ public class MainActivity extends AppCompatActivity {
         displayScore();
     }
 
-    /**
-     * Changes to the next question
-     */
-    public void loadQuestion(){
-        int color = 0;
-        TextView textView = (TextView) findViewById(R.id.question);
-        LinearLayout bgElement = (LinearLayout) findViewById(R.id.activity_main);
-        String question = getString(R.string.questionStart);
-        switch (questionCounter){
 
-            case 1:  question = getString(R.string.question1);
-                answer = true;
-                color = ContextCompat.getColor(this, R.color.orange);
-                break;
-            case 2: question = getString(R.string.question2);
-                color = ContextCompat.getColor(this, R.color.blue);
-                answer = false;
-                break;
-            case 3: question = getString(R.string.question3);
-                color = ContextCompat.getColor(this, R.color.yellow);
-                answer = true;
-                break;
-            case 4: question = getString(R.string.question4);
-                color = ContextCompat.getColor(this, R.color.red);
-                answer = true;
-                break;
-            default: question = getString(R.string.questionEnd);
-                color = ContextCompat.getColor(this, R.color.blue_gray);
-                answer = true;
-                questionCounter = 0;
-                break;
-        }
-        questionCounter = questionCounter + 1;
-        textView.setText(question);
-        bgElement.setBackgroundColor(color);
-    }
+
+
     public void displayScore(){
         if(score <= 0){
             return;
@@ -142,6 +112,33 @@ public class MainActivity extends AppCompatActivity {
         TextView scoreView = (TextView) findViewById(R.id.score);
         String scoreString = getString(R.string.plus)+String.valueOf(score);
         scoreView.setText(scoreString);
+    }
+
+
+    /**
+     * Changes to the next question
+     */
+    public void loadQuestion(){
+        TextView textView = (TextView) findViewById(question);
+        LinearLayout bgElement = (LinearLayout) findViewById(R.id.activity_main);
+
+        int[] androidColors = getResources().getIntArray(R.array.background);
+        int randomAndroidColor = androidColors[new Random().nextInt(androidColors.length)];
+        bgElement.setBackgroundColor(randomAndroidColor);
+
+        Random r = new Random();
+        int i1 = r.nextInt(5 - 1) + 1; //1 inclusive 5 exclusive
+        String chooseQuestion = "question" + i1;
+        String chooseAnswer = "answer" + i1;
+
+        String getQuestion = (String) getResources().getText(getResources().getIdentifier(chooseQuestion, "string" ,getPackageName()));
+        //Log.v("MainActivity", "String Identifier: " + getQuestion);
+        String getAnswer = (String) getResources().getText(getResources().getIdentifier(chooseAnswer, "string" ,getPackageName()));
+
+        textView.setText(getQuestion);
+        answer =  Boolean.valueOf(getAnswer);
+
+
     }
 }
 

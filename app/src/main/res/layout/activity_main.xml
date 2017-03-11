@@ -8,8 +8,9 @@
     android:orientation="vertical"
     tools:context="com.example.android.srt.MainActivity">
 
-    <include layout="@layout/app_bar"
-        android:id="@+id/app_bar"/>
+    <include
+        android:id="@+id/app_bar"
+        layout="@layout/app_bar" />
 
     <TextView
         android:id="@+id/question"
@@ -19,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/layout_marginBottom"
+        android:baselineAligned="false"
         android:orientation="horizontal">
 
         <RelativeLayout
@@ -28,7 +30,7 @@
 
             <CheckBox
                 android:id="@+id/checkBoxYes"
-                style="@style/checkboxStyle"/>
+                style="@style/checkboxStyle" />
 
             <TextView
                 style="@style/answerTextViewStyle"

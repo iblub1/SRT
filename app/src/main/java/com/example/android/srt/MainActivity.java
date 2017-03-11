@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
 
     int score = 100; //Value for the Players Score
     boolean answer = true; //creates boolean for the corret answer true = right, false = wrong
-    int questionCounter = 1; //Chooses question
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -25,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean pressedRight() {
         CheckBox checkBox = (CheckBox) findViewById(R.id.checkBoxYes);
         Boolean hasPressedRight = checkBox.isChecked();
-        if(checkBox.isChecked()){
+        if (checkBox.isChecked()) {
             checkBox.toggle();
         }
         return hasPressedRight;
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean pressedWrong() {
         CheckBox checkBox = (CheckBox) findViewById(R.id.checkBoxNo);
         Boolean hasPressedWrong = checkBox.isChecked();
-        if(checkBox.isChecked()){
+        if (checkBox.isChecked()) {
             checkBox.toggle();
         }
         return hasPressedWrong;
@@ -74,51 +74,48 @@ public class MainActivity extends AppCompatActivity {
     public void next(View v) {
         boolean hasPressedRight = pressedRight();
         boolean hasPressedWrong = pressedWrong();
-         if((hasPressedRight) && (hasPressedWrong)){
-             return;
-         }
-        if((!hasPressedRight) && (!hasPressedWrong)){
+        if ((hasPressedRight) && (hasPressedWrong)) {
             return;
         }
-                if (answer) {
-                    if (hasPressedRight) {
-                        Toast.makeText(this, getString(R.string.right), Toast.LENGTH_SHORT).show();
-                        score = score + 10;
-                        loadQuestion();
-                    } else {
-                        Toast.makeText(this, getString(R.string.wrong), Toast.LENGTH_SHORT).show();
-                        score = score - 5;
-                    }
-                } else {
-                    if (hasPressedWrong) {
-                        Toast.makeText(this, getString(R.string.right), Toast.LENGTH_SHORT).show();
-                        score = score + 10;
-                        loadQuestion();
-                    } else {
-                        Toast.makeText(this, getString(R.string.wrong), Toast.LENGTH_SHORT).show();
-                        score = score - 5;
-                    }
-                }
+        if ((!hasPressedRight) && (!hasPressedWrong)) {
+            return;
+        }
+        if (answer) {
+            if (hasPressedRight) {
+                Toast.makeText(this, getString(R.string.right), Toast.LENGTH_SHORT).show();
+                score = score + 10;
+                loadQuestion();
+            } else {
+                Toast.makeText(this, getString(R.string.wrong), Toast.LENGTH_SHORT).show();
+                score = score - 5;
+            }
+        } else {
+            if (hasPressedWrong) {
+                Toast.makeText(this, getString(R.string.right), Toast.LENGTH_SHORT).show();
+                score = score + 10;
+                loadQuestion();
+            } else {
+                Toast.makeText(this, getString(R.string.wrong), Toast.LENGTH_SHORT).show();
+                score = score - 5;
+            }
+        }
         displayScore();
     }
 
-
-
-
-    public void displayScore(){
-        if(score <= 0){
+    public void displayScore() {
+        if (score <= 0) {
             return;
         }
         TextView scoreView = (TextView) findViewById(R.id.score);
-        String scoreString = getString(R.string.plus)+String.valueOf(score);
+        String scoreString = getString(R.string.plus) + String.valueOf(score);
         scoreView.setText(scoreString);
     }
 
 
     /**
-     * Changes to the next question
+     * Changes to the next question, changes background color
      */
-    public void loadQuestion(){
+    public void loadQuestion() {
         TextView textView = (TextView) findViewById(question);
         LinearLayout bgElement = (LinearLayout) findViewById(R.id.activity_main);
 
@@ -131,12 +128,12 @@ public class MainActivity extends AppCompatActivity {
         String chooseQuestion = "question" + i1;
         String chooseAnswer = "answer" + i1;
 
-        String getQuestion = (String) getResources().getText(getResources().getIdentifier(chooseQuestion, "string" ,getPackageName()));
+        String getQuestion = (String) getResources().getText(getResources().getIdentifier(chooseQuestion, "string", getPackageName()));
         //Log.v("MainActivity", "String Identifier: " + getQuestion);
-        String getAnswer = (String) getResources().getText(getResources().getIdentifier(chooseAnswer, "string" ,getPackageName()));
+        String getAnswer = (String) getResources().getText(getResources().getIdentifier(chooseAnswer, "string", getPackageName()));
 
         textView.setText(getQuestion);
-        answer =  Boolean.valueOf(getAnswer);
+        answer = Boolean.valueOf(getAnswer);
 
 
     }
